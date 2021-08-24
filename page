@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{{ url_for("static", filename="CSS2.css") }}'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <title>리스트형 게시물</title>
+
+   <script>
+        function showResult() {
+            $.ajax({
+                type: "GET",
+                url: "/review",
+                data: {},
+                success: function (response) {
+                        let reviews = response['all_reviews']
+                        for (let i = 0; i < reviews.length; i++) {
+                            let image = reviews[i]['image']
+                            let title = reviews[i]['title']
+                            let content = reviews[i]['content']
+
+                            let temp_html = `<div class="block">
+                                                <div class="grid" onclick="window.open('address')" style="cursor: pointer">
+                                                    <div>
+                                                        ${image}
+                                                        <img src="">
+                                                    </div>
+                                                    <div>
+                                                        ${title}
+                                                    </div>
+                                                    <div>
+                                                        ${content}
+                                                    </div>
+                                                </div>
+                                            </div> `
+                            $('#container').append(temp_html)
+                        }
+                    }
+                })
+            }
+
+        </script>
+
+</head>
+<body>
+<div class="wrap" id="container">
+    <div class="block">
+        <div class="grid" onclick="window.open('address')" style="cursor: pointer">
+            <div class="image">
+                1 Image
+                <img src="">
+            </div>
+            <div class="title">
+                <h1>2 Title</h1>
+            </div>
+            <div class="content">
+                <p>3 Content</p>
+            </div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="grid" onclick="window.open('address')" style="cursor: pointer">
+            <div class="image">
+                <img src="../static/Seckler_Eastern-Cape-Bull-980-680x453.jpg" height="453" width="680"/>
+            </div>
+            <div class="title">
+                <h1>Eastern Cape Bull</h1>
+            </div>
+            <div class="content">
+                <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+                    blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+            </div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="grid" onclick="window.open('address')" style="cursor: pointer">
+            <div class="image">
+                <img src="../static/Seckler_Black-Sand-Crossing-980-680x453.jpg" alt="Black-Sand-Crossing" height="453"
+                     width="680"/>
+            </div>
+            <div class="title">
+                <h1>Black Sand Crossing</h1>
+            </div>
+            <div class="content">
+                <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+                    blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+            </div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="grid" onclick="window.open('address')" style="cursor: pointer">
+            <div class="image">
+                <img src="../static/Seckler_Wild-Coast-Wave-980-680x453.jpg" alt="Wild-Coast-Wave" height="453"
+                     width="680"/></div>
+            <div class="title">
+                <h1>Wild Coast Wave</h1>
+            </div>
+            <div class="content">
+                <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+                    blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
